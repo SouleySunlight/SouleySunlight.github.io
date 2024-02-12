@@ -1,0 +1,38 @@
+---
+interface Props {
+  title: string;
+  href: string;
+}
+const { title, href } = Astro.props;
+---
+
+<a class="header-card-container" href={Astro.props.href}>
+  <p>{Astro.props.title}</p>
+</a>
+
+<style>
+  .header-card-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 5px;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+  }
+  a:hover {
+    background-image: var(--accent-gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-size: 400%;
+    background-position: 0%;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1;
+  }
+</style>
