@@ -1,0 +1,37 @@
+---
+import { Image } from "astro:assets";
+import { type Flower } from "../lib/directus";
+
+interface Props {
+  flower: Flower;
+}
+const { flower } = Astro.props;
+---
+
+<div class="flower-item-container">
+  <Image
+    src={`http://localhost:8055/assets/${Astro.props.flower.image}`}
+    alt="ahha"
+    width={200}
+    height={200}
+    class="flower-image"
+  />
+  <p>{Astro.props.flower.name}</p>
+</div>
+
+<style>
+  .flower-item-container {
+    display: flex;
+    flex-direction: column;
+    margin: 10px;
+    background-image: var(--accent-gradient);
+    text-align: center;
+    border-radius: 10%;
+    color: black;
+    font-size: 1rem;
+    max-width: 200px;
+  }
+  .flower-image {
+    border-radius: 10% 10% 0 0;
+  }
+</style>

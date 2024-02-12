@@ -1,0 +1,27 @@
+---
+import { type Flower } from "../lib/directus";
+import FlowerItem from "./FlowerItem.astro";
+
+interface Props {
+  flowers: Flower[];
+}
+const { flowers } = Astro.props;
+---
+
+<div class="flowers-container">
+  {
+    flowers.map((flower) => {
+      return <FlowerItem flower={flower} />;
+    })
+  }
+</div>
+
+<style>
+  .flowers-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    gap: 5%;
+    margin: 20px;
+  }
+</style>

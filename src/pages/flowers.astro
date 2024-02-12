@@ -2,18 +2,26 @@
 import Layout from "../layouts/Layout.astro";
 import Card from "../components/Card.astro";
 import Header from "../components/Header.astro";
+import directus, { type Flower } from "../lib/directus";
+import { readItems } from "@directus/sdk";
+import FlowersDisplay from "../components/FlowersDisplay.astro";
+
+const flowers = await directus.request<Flower[]>(
+  readItems("flowers", {
+    fields: ["slug", "name", "description", "image"],
+  })
+);
 ---
 
 <Layout title="Flowers">
-  <h1>Flowers</h1>
+  <FlowersDisplay flowers={flowers} />
+  <style>
+    h1 {
+      font-size: 4rem;
+      font-weight: 700;
+      line-height: 1;
+      text-align: center;
+      margin-bottom: 1em;
+    }
+  </style>
 </Layout>
-
-<style>
-  h1 {
-    font-size: 4rem;
-    font-weight: 700;
-    line-height: 1;
-    text-align: center;
-    margin-bottom: 1em;
-  }
-</style>
