@@ -1,0 +1,27 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import directus, { type Flower } from "../../lib/directus";
+import { readItems, readItem } from "@directus/sdk";
+
+export async function getStaticPaths() {
+  const flowers = await directus.request<Flower[]>(
+    readItems("flowers", {
+      fields: ["*", { relation: ["*"] }],
+    })
+  );
+  return flowers.map((flower) => ({
+    params: { slug: flower.slug },
+    props: flower,
+  }));
+}
+
+const flower = Astro.props;
+---
+
+<Layout title={flower.name}>
+  <main>
+    <img src={`http://localhost:8055/assets/${flower.image}?width=500`} />
+    <h1>{flower.name}</h1>
+    <div set:html={flower.description} />
+  </main>
+</Layout>
