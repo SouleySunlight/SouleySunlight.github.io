@@ -1,17 +1,17 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
-import Header from "../components/Header.astro";
-import rose from "../images/rose.jpeg";
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro";
+import Header from "../../components/Header.astro";
+import plumBlossom from "../../images/plum-blossom.jpg";
 import { Image } from "astro:assets";
 ---
 
-<Layout title="English national flower">
+<Layout title="中国花">
   <main>
     <h1>
-      The english national flower is the <span class="text-gradient">ROSE</span>
+      中国的国花是 <span class="text-gradient">梅花</span>
     </h1>
-    <Image src={rose} alt="lys" width={700} />
+    <Image src={plumBlossom} alt="plum blossom" width={700} />
   </main>
 </Layout>
 

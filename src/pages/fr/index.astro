@@ -1,17 +1,19 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import Card from "../components/Card.astro";
-import Header from "../components/Header.astro";
-import rose from "../images/rose.jpeg";
+import Layout from "../../layouts/Layout.astro";
+import Card from "../../components/Card.astro";
+import Header from "../../components/Header.astro";
+import lys from "../../images/lys.jpg";
 import { Image } from "astro:assets";
 ---
 
-<Layout title="English national flower">
+<Layout title="La fleur de France">
   <main>
     <h1>
-      The english national flower is the <span class="text-gradient">ROSE</span>
+      La fleur nationale de la France est le <span class="text-gradient"
+        >LYS</span
+      >
     </h1>
-    <Image src={rose} alt="lys" width={700} />
+    <Image src={lys} alt="lys" width={700} />
   </main>
 </Layout>
 
