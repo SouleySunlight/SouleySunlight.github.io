@@ -1,0 +1,45 @@
+# fly.toml app configuration file generated for directus-astro on 2024-02-14T16:13:29+01:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'directus-astro'
+primary_region = 'cdg'
+
+[build]
+  image = 'directus/directus:latest'
+
+[env]
+  STORAGE_LOCAL_ROOT = '/data'
+  STORAGE_LOCATIONS = 'local'
+
+[[mounts]]
+  source = 'directus_data'
+  destination = '/data'
+
+[http_service]
+  internal_port = 8055
+  force_https = true
+  auto_stop_machines = true
+  auto_start_machines = true
+  min_machines_running = 0
+
+  [http_service.concurrency]
+    type = 'requests'
+    hard_limit = 250
+    soft_limit = 200
+
+[checks]
+  [checks.admin]
+    port = 8055
+    type = 'http'
+    interval = '5s'
+    timeout = '10s'
+    grace_period = '30s'
+    method = 'get'
+    path = '/admin'
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
