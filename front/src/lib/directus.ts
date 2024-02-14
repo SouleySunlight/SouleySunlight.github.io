@@ -7,7 +7,9 @@ export type Flower = {
   slug: string
 }
 
+const directusApi = import.meta.env.PUBLIC_DIRECTUS_API
 
-const directus = createDirectus('http://localhost:8055/').with(rest());
+
+const directus = createDirectus(directusApi).with(rest());
 
 export default directus;

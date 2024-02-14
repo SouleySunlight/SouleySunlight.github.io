@@ -6,11 +6,12 @@ interface Props {
   flower: Flower;
 }
 const { flower } = Astro.props;
+const directusApi = import.meta.env.PUBLIC_DIRECTUS_API;
 ---
 
 <a class="flower-item-container" href={`flower/${flower.slug}`}>
   <Image
-    src={`http://localhost:8055/assets/${Astro.props.flower.image}`}
+    src={`${directusApi}/assets/${Astro.props.flower.image}`}
     alt="ahha"
     width={200}
     height={200}

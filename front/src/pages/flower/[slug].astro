@@ -14,13 +14,13 @@ export async function getStaticPaths() {
     props: flower,
   }));
 }
-
+const directusApi = import.meta.env.PUBLIC_DIRECTUS_API;
 const flower = Astro.props;
 ---
 
 <Layout title={flower.name}>
   <main>
-    <img src={`http://localhost:8055/assets/${flower.image}?width=500`} />
+    <img src={`${directusApi}/assets/${flower.image}?width=500`} />
     <h1>{flower.name}</h1>
     <div set:html={flower.description} />
   </main>
